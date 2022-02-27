@@ -74,23 +74,23 @@ public class Utils {
 
     /**
      * calculate violation in an assignment list
-     * @param assigment list of assignments
+     * @param assignment list of assignments
      * @param listHubs list of hubs
      * @param listCustomers list of customers
      * @return a Pair<int,int> :
      *                              first is nViolation
      *                              second is weightViolation
      */
-    public static Pair<Integer,Integer> calViolation(List<Integer> assigment,
+    public static Pair<Integer,Integer> calViolation(List<Integer> assignment,
                                        List<Triplet<Double,Double,Integer>> listHubs,
                                        List<Triplet<Double,Double,Integer>> listCustomers){
         final int N_HUBS = listHubs.size();
-        final int N_CUSTOMERS = assigment.size();
+        final int N_CUSTOMERS = assignment.size();
         int nViolation = 0; int weightViolation = 0;
         int[] hubLoads =  new int[N_HUBS];
 
         for (int i=0;i<N_CUSTOMERS;++i){
-            hubLoads[assigment.get(i)]+= listCustomers.get(i).third();
+            hubLoads[assignment.get(i)]+= listCustomers.get(i).third();
         }
         for (int i=0;i<N_HUBS;++i){
             if (hubLoads[i]>listHubs.get(i).third()){
@@ -132,6 +132,22 @@ public class Utils {
 
         for (int i=0;i<N_CUSTOMERS;++i){
             resAssignments.add(top5HubIdx[i][assignments.get(i)]);
+        }
+        return resAssignments;
+    }
+
+    /**
+     * convert the assignment with index in top5HubIdx to the assignment with actual index of hubs
+     * @param assignments assignment with index in top5HubIdx
+     * @param top5HubIdx an array containing index of top 5 nearest hubs to each customer
+     * @return assignment with actual index of hubs
+     */
+    public static List<Integer> convertAssignmentsIdxFromTop5(int[] assignments,int[][] top5HubIdx){
+        final int N_CUSTOMERS = assignments.length;
+        List<Integer> resAssignments = new ArrayList<>(N_CUSTOMERS);
+
+        for (int i=0;i<N_CUSTOMERS;++i){
+            resAssignments.add(top5HubIdx[i][assignments[i]]);
         }
         return resAssignments;
     }

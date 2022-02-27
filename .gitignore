@@ -1,0 +1,4 @@
+data/input/tmp/
+data/log/*.csv
+
+data/output/**/*.txt

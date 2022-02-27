@@ -1,0 +1,3 @@
+data,#hubs,#customers,run idx,result,#violation,violation,time,status
+instance_10_200,10,200,0,56604.96,0,0,4896.00,OPTIMAL
+instance_15_300,15,300,0,125212.66,0,0,147155.00,FEASIBLE

@@ -72,7 +72,9 @@ public class IPModel extends AbstractModel {
         }
 
         objective.setMinimization();
+        System.out.println("IP Running");
         final MPSolver.ResultStatus  resultStatus = solver.solve();
+        System.out.println("IP Finished");
 
         switch (resultStatus){
             case OPTIMAL -> this.status = "OPTIMAL";

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractModel {
     /*------------- timer setup----------------------*/
-    protected final int TIME_LIMIT_IN_MINUTE = 20;
+    protected final int TIME_LIMIT_IN_MINUTE = 5;
     protected double timeElapsed;
     /**
      * used to set time limit for solving
@@ -100,6 +100,7 @@ public abstract class AbstractModel {
                     printWriter.printf("%d ", hubIdx);
                 }
             }
+            printWriter.printf("\n");
             printWriter.close();
         } catch (FileNotFoundException fileNotFoundException) {
             System.out.println(fileNotFoundException.getMessage());
@@ -142,7 +143,7 @@ public abstract class AbstractModel {
      * @param dataName name of input
      */
     protected void run(String dataName) {
-        System.out.printf("Start Solving %s with nHubs=%d, nCustomers=%d\n", dataName,
+        System.out.printf("Start Solving %s with #Hubs=%d, #Customers=%d\n", dataName,
                 inputInterface.getNumHubs(), inputInterface.getNumCustomers());
 
         timer = Executors.newSingleThreadScheduledExecutor();
@@ -256,7 +257,7 @@ public abstract class AbstractModel {
 
                 /* remove the name of the previous result file ,
                 4 is the length of prefix "res_"
-                5 is the length of extension ".txt"*/
+                4 is the length of extension ".txt"*/
                 outputFileName.delete(outputFileName.length()- 4 - dataName.length() - 4, outputFileName.length());
             }
         }

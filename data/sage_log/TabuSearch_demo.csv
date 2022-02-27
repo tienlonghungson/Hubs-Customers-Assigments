@@ -1,0 +1,4 @@
+data,#hubs,#customers,run idx,result,#violation,violation,time,status
+demo,3,5,0,5.00,0,0,23.00,FEASIBLE
+demolarge,5,50,0,227.50,0,0,55.00,FEASIBLE
+infeasible,3,5,0,-1.00,0,0,2.00,INFEASIBLE

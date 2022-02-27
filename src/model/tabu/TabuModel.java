@@ -13,7 +13,7 @@ public class TabuModel extends AbstractModel {
     private static int NUM_GENERATION;
 
     private static void setNumGeneration(int nHub,int nCustomer){
-        NUM_GENERATION = Math.max(50,Math.min(500,100*Math.max(nHub/nCustomer,nCustomer/nHub)));
+        NUM_GENERATION = Math.max(50,Math.min(1500,100*Math.max(nHub/nCustomer,nCustomer/nHub)));
     }
 
     private static void setWeight(double maxDistance, int nHub, int nCustomer){
@@ -102,7 +102,6 @@ public class TabuModel extends AbstractModel {
                 continue;
             }
             currSol.update(moveToNext);
-
             for (int i = 0; i< tabu.length; ++i){
                 if (tabu[i]>0){
                     tabu[i]--;
